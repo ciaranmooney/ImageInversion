@@ -475,8 +475,8 @@ void MainWindow::Analise()
         image_window->update();
         image_window->show();
 
-        /* Ciaran modifications
-        sprintf(filename,"%s/%s/inversion", work_dir_c, dirname, file_template); // inversion folder path string
+         //Ciaran modifications
+        sprintf(filename,"%s/%s/inversion", work_dir_c, dirname); // inversion folder path string
         mkdir(filename);
         sprintf(filename,"%s/%s/inversion/x%iy%i", work_dir_c, dirname, xc, yc); //output folder name
         mkdir(filename);
@@ -489,14 +489,12 @@ void MainWindow::Analise()
                 sprintf(filename,"%s/%s/inversion/x%iy%i/q%i", work_dir_c, dirname, xc, yc, n_quadrant); //output folder
                 break;
         }
-        */
+
 
         sprintf(bufferc, "%s_orig", filename);
         SaveImage(bufferc);
 
-
         InvertImage();
-
 
         if(!mdata1->SavePES(filename)) {message("there is no spectrum"); }
         if(!mdata1->SaveAng(filename)) {message("there is no angular distribution"); }
@@ -902,10 +900,6 @@ void MainWindow::ConvertImages()
 
 ///////////////////////////////
 
-    int xc = ui->spinBox_xc->value();
-    int yc = ui->spinBox_yc->value();
-    int dr = ui->spinBox_dr->value();
-
     int file_start, file_stop; file_start=0; file_stop = files.size();
     for(int k = file_start; k < file_stop; k++){ // main loop
 
@@ -959,7 +953,7 @@ void MainWindow::DataManipulation()
 
     //
 
-    char work_dir_c[255],fileout[255],work_dir_c2[255], buffer[255];//, buffer[255];
+    char work_dir_c[255],fileout[255];//, buffer[255];
     sprintf(work_dir_c,"D:/Roman/Data/20130531/CS2_electrons/SumImages/");
     //sprintf(work_dir_c2,"D:/Roman/Data/20130531/CS2_electrons/Inverted2");
 /*
